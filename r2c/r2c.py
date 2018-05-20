@@ -56,7 +56,7 @@ parser.add_option("-o", "--output",   dest="ofile", help="output file name")
 (coptions,cargs) = parser.parse_args()
 
 if len(cargs) == 0:
-    print "ERROR: Must supply file name." 
+    print("ERROR: Must supply file name.")
     sys.exit()
 
 fname = cargs[0]
@@ -66,7 +66,10 @@ if coptions.ofile:
 else:
     ofile = sys.stdout
 
-lines = [a[:-1] for a in file(fname).readlines()]
+# lines = [a[:-1] for a in file(fname).readlines()]
+f = open(fname)
+lines = [a[:-1] for a in f.readlines()]
+f.close()
 
 maxlen = max([len(line) for line in lines])
 
